@@ -37,7 +37,7 @@ def the_reader():
             for i in token:
                 for x in i:
                     if not x == "\n":
-                        if len(buffer) >= memory.screen_width:
+                        if len(buffer) >= (memory.screen_width - 2):
                             memory.window.buffer_add(buffer)
                             buffer = ""
                         buffer += x
@@ -55,7 +55,7 @@ def screen_loop():
 def screen(stdscr):
     global NICK, USER
     memory.screen_width = curses.COLS - 2
-    memory.window = win.window(0.90, 0.90, 0.01, 0.01)
+    memory.window = win.window(0.90, 0.99, 0.01, 0.01)
     memory.window.build()
     connect(NICK, USER)
     threading.Thread(target=screen_loop).start()
