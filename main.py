@@ -72,6 +72,12 @@ def screen(stdscr):
             if len(buffer) > 0:
                 memory.object.send(f"{buffer}\n".encode())
                 buffer = ""
+        if asd == 16:  # Ctrl + p
+            memory.window.up_marging()
+            memory.window.write_buffer()
+        if asd == 14:  # Ctrl + n
+            memory.window.down_marging()
+            memory.window.write_buffer()
         if asd in [8, 127]:  # backspace
             buffer = buffer[:-1]
         if num - len(buffer) <= 0:
