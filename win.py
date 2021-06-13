@@ -3,7 +3,8 @@ import curses
 
 class window():
     h = 0
-    w = 0 
+    w = 0
+
     def __init__(self, h=0, w=0, y=0, x=0):
         count = 0
         ww = curses.COLS
@@ -11,7 +12,7 @@ class window():
         self.m = 0
         self.buffer = []
         self.changed = False
-        #if there is a float on [h, w]
+        # if there is a float on [h, w]
         if type(float()) in [type(h), type(w)]:
             self.x = int(ww * x)
             self.y = int(hh * y)
@@ -57,9 +58,9 @@ class window():
         self.clean()
         count = 1
         if len(self.buffer) <= (self.h - 2):
-            for lines in range(0,len(self.buffer)):
+            for lines in range(0, len(self.buffer)):
                 self.write(count, 1, self.buffer[lines])
-                count+=1
+                count += 1
         else:
             token = len(self.buffer) - self.h - 2
             count = 1
