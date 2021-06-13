@@ -65,9 +65,13 @@ class window():
         else:
             token = len(self.buffer) - self.h - 2
             count = 1
-            #for lines in range(token - self.m - 2, len(self.buffer) - self.m - 3):
+            # for lines in range(token - self.m - 2, len(self.buffer) - self.m - 3):
             for lines in range(self.h - 2):
-                self.write(count, 1, str(self.buffer[(self.m+self.h - 1 - count)* - 1]))
+                try:
+                    self.write(count, 1, str(
+                        self.buffer[(self.m+self.h - 2 - count) * - 1]))
+                except:
+                    pass
                 #self.write(1, 1, str(range(token - self.m, len(self.buffer) - self.m)))
                 count+=1
 
