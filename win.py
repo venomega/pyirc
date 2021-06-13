@@ -30,12 +30,13 @@ class window():
         """
         self.win.refresh()
 
-    def build(self):
+    def build(self, n=0):
         """
         Create the window with borders
         """
         self.win = curses.newwin(self.h, self.w, self.y, self.x)
-        self.win.border()
+        if n == 0:
+            self.win.border()
         self.refresh()
 
     def write(self, y, x, string):
