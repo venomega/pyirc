@@ -40,6 +40,7 @@ def the_reader():
                         if len(buffer) >= (memory.screen_width - 2):
                             memory.window.buffer_add(buffer)
                             buffer = ""
+
                         buffer += x
             memory.window.buffer_add(buffer)
         if "PING" in recv:
@@ -78,6 +79,10 @@ def screen(stdscr):
         if asd >= 97 and asd <= 122:  # lower keys
             buffer += asd.to_bytes(1, 'little').decode()
         if asd >= 65 and asd <= 90:  # upper keys
+            buffer += asd.to_bytes(1, 'little').decode()
+        if asd == 32:  # space bar
+            buffer += asd.to_bytes(1, 'little').decode()
+        if asd == 35:  # hastag
             buffer += asd.to_bytes(1, 'little').decode()
 
         o.write(0, 0, " " * (memory.screen_width))
